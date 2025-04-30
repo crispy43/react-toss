@@ -7,7 +7,7 @@ export default function DefaultLayout() {
   return (
     <>
       <Header />
-      <main>
+      <main className="min-h-[calc(100vh-60px)] pt-[60px]">
         <Outlet />
       </main>
       <Footer />
