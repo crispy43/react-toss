@@ -1,3 +1,4 @@
+import InDropUp from '~/components/animation/in-drop-up';
 import HeroDown from '~/components/svg/hero-down.svg?react';
 
 import AppButton from './app-button';
@@ -6,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative flex h-[calc(100vh-60px)] w-full flex-col items-center bg-[url('/images/new_main.png')] bg-cover bg-center pt-[120px]">
       <div className="hero-shadow absolute top-0 h-[500px] w-full" />
-      <div className="absolute z-10">
+      <InDropUp delay={1} mb={0} y={0} className="absolute z-10">
         <h1 className="text-center text-[66px] leading-[1.4] font-[700]">
           금융의 모든 것<br />
           토스에서 쉽고 간편하게
@@ -21,7 +22,7 @@ export default function Hero() {
             Google Play
           </AppButton>
         </div>
-      </div>
+      </InDropUp>
       <div className="absolute bottom-[30px] z-10 h-[50px] w-[50px]">
         <HeroDown />
       </div>
