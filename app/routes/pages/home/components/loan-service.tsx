@@ -8,8 +8,8 @@ export default function LoanService() {
   const isInView = useInView(ref, { once: true, margin: '0px 0px 100px 0px' });
 
   return (
-    <section>
-      <div className="container flex">
+    <section className="h-[1326px]">
+      <div className="container flex pt-[250px]">
         <div>
           <InDropUp className="mb-[210px]">
             <h1 className="mb-[20px] text-[28px] leading-[1.3] font-[700] text-[#3182f6]">
