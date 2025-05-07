@@ -1,8 +1,8 @@
 export default function CreditService() {
   return (
     <section className="h-[1687px] bg-[#f9fafb]">
-      <div className="container bg-amber-100 pt-[250px]">
-        <div className="bg-red-100">
+      <div className="container pt-[250px]">
+        <div>
           <h1 className="mb-[30px] text-[28px] leading-[1.3] font-[700] text-[#3182f6]">
             신용
           </h1>
@@ -14,8 +14,8 @@ export default function CreditService() {
             무료로 관리하세요
           </p>
         </div>
-        <div className="grid grid-cols-2 bg-green-100">
-          <div className="mb-[30px] h-[400px] bg-blue-100">
+        <div className="grid grid-cols-2">
+          <div className="mb-[30px] h-[400px]">
             <img
               src="/images/credit-point.png"
               alt="credit-point"
@@ -39,7 +39,7 @@ export default function CreditService() {
               </p>
             </div>
           </div>
-          <div className="mb-[30px] h-[400px] bg-blue-200">
+          <div className="mb-[30px] h-[400px]">
             <img
               src="/images/credit-point-up.png"
               alt="credit-point-up"
@@ -63,7 +63,7 @@ export default function CreditService() {
               </p>
             </div>
           </div>
-          <div className="mb-[30px] h-[400px] bg-blue-300">
+          <div className="mb-[30px] h-[400px]">
             <img src="/images/bell.png" alt="bell" className="mb-[30px] w-[120px]" />
             <div>
               <h2
@@ -82,7 +82,7 @@ export default function CreditService() {
               </p>
             </div>
           </div>
-          <div className="mb-[30px] h-[400px] bg-blue-400">
+          <div className="mb-[30px] h-[400px]">
             <img src="/images/bulb.png" alt="bulb" className="mb-[30px] w-[120px]" />
             <div>
               <h2
