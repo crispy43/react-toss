@@ -19,8 +19,8 @@ export default function TransferService() {
             이런 송금 써보셨나요?
           </p>
         </InDropUp>
-        <InDropUp className="mb-[150px] flex justify-between">
-          <div className="w-[510px]">
+        <div className="mb-[150px] flex justify-between">
+          <InDropUp className="w-[510px]">
             <h2 className="item-center mb-[10px] flex gap-1 text-[20px] leading-[1.4] font-[600] text-[#3182f6]">
               <div className="h-[24px] w-[24px]">
                 <AlwaysFree />
@@ -40,16 +40,16 @@ export default function TransferService() {
               <br />
               이제 토스와 함께 수수료 걱정 없이 송금하세요.
             </p>
-          </div>
-          <div className="w-[510px]">
+          </InDropUp>
+          <InDropUp className="w-[510px]">
             <img src="/images/transfer-service-01.png" alt="transfer-service-01" />
-          </div>
-        </InDropUp>
-        <InDropUp className="mb-[150px] flex justify-between">
-          <div className="w-[510px]">
+          </InDropUp>
+        </div>
+        <div className="mb-[150px] flex justify-between">
+          <InDropUp className="w-[510px]">
             <img src="/images/transfer-service-02.png" alt="transfer-service-02" />
-          </div>
-          <div className="w-[510px]">
+          </InDropUp>
+          <InDropUp className="w-[510px]">
             <h2 className="item-center mb-[10px] flex gap-1 text-[20px] leading-[1.4] font-[600] text-[#3182f6]">
               <div className="h-[24px] w-[24px]">
                 <Shield />
@@ -71,10 +71,10 @@ export default function TransferService() {
               <br />
               안전하게 송금할 수 있어요.
             </p>
-          </div>
-        </InDropUp>
-        <InDropUp className="flex justify-between">
-          <div className="w-[510px]">
+          </InDropUp>
+        </div>
+        <div className="flex justify-between">
+          <InDropUp className="w-[510px]">
             <h2 className="item-center mb-[10px] flex gap-1 text-[20px] leading-[1.4] font-[600] text-[#3182f6]">
               <div className="h-[24px] w-[24px]">
                 <Timer />
@@ -94,11 +94,11 @@ export default function TransferService() {
               <br />
               점검 시간이 끝나면 토스가 알아서 송금해드릴게요.
             </p>
-          </div>
-          <div className="w-[510px]">
+          </InDropUp>
+          <InDropUp className="w-[510px]">
             <img src="/images/transfer-service-03.png" alt="transfer-service-03" />
-          </div>
-        </InDropUp>
+          </InDropUp>
+        </div>
       </div>
     </section>
   );
