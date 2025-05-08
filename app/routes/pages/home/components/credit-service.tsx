@@ -1,8 +1,10 @@
+import InDropUp from '~/components/animation/in-drop-up';
+
 export default function CreditService() {
   return (
     <section className="h-[1687px] bg-[#f9fafb]">
       <div className="container pt-[250px]">
-        <div>
+        <InDropUp>
           <h1 className="mb-[30px] text-[28px] leading-[1.3] font-[700] text-[#3182f6]">
             신용
           </h1>
@@ -13,9 +15,9 @@ export default function CreditService() {
             <br />
             무료로 관리하세요
           </p>
-        </div>
+        </InDropUp>
         <div className="grid grid-cols-2">
-          <div className="mb-[30px] h-[400px]">
+          <InDropUp className="mb-[30px] h-[400px]">
             <img
               src="/images/credit-point.png"
               alt="credit-point"
@@ -38,8 +40,8 @@ export default function CreditService() {
                 있어요.
               </p>
             </div>
-          </div>
-          <div className="mb-[30px] h-[400px]">
+          </InDropUp>
+          <InDropUp className="mb-[30px] h-[400px]">
             <img
               src="/images/credit-point-up.png"
               alt="credit-point-up"
@@ -62,8 +64,8 @@ export default function CreditService() {
                 있어요.
               </p>
             </div>
-          </div>
-          <div className="mb-[30px] h-[400px]">
+          </InDropUp>
+          <InDropUp className="mb-[30px] h-[400px]">
             <img src="/images/bell.png" alt="bell" className="mb-[30px] w-[120px]" />
             <div>
               <h2
@@ -81,8 +83,8 @@ export default function CreditService() {
                 나의 신용점수가 바뀔 때마다 바로 확인하세요.
               </p>
             </div>
-          </div>
-          <div className="mb-[30px] h-[400px]">
+          </InDropUp>
+          <InDropUp className="mb-[30px] h-[400px]">
             <img src="/images/bulb.png" alt="bulb" className="mb-[30px] w-[120px]" />
             <div>
               <h2
@@ -100,7 +102,7 @@ export default function CreditService() {
                 신용관리 팁 콘텐츠를 한번 읽어보세요.
               </p>
             </div>
-          </div>
+          </InDropUp>
         </div>
       </div>
     </section>

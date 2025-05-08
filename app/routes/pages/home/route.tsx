@@ -2,6 +2,7 @@ import CreditService from './components/credit-service';
 import Description from './components/description';
 import Hero from './components/hero';
 import HomeService from './components/home-service';
+import InvestService from './components/invest-service';
 import LoanService from './components/loan-service';
 import TransferService from './components/transfer-service';
 
@@ -14,6 +15,7 @@ export default function Home() {
       <TransferService />
       <LoanService />
       <CreditService />
+      <InvestService />
     </>
   );
 }
