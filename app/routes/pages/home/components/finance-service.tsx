@@ -1,6 +1,15 @@
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
+
+import ScrollOpacity from '~/components/animation/scroll-opacity';
+
 export default function FinanceService() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, layoutEffect: false });
+  const scrollY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <section className="h-[4232px]">
+    <motion.section className="h-[4232px]" ref={ref} style={{ lineHeight: scrollY }}>
       <div className="relative container pt-[250px]">
         <h1 className="mb-[140px] text-[60px] leading-[1.4] font-[700] text-[#191f28]">
           금융을 넘어
@@ -9,12 +18,22 @@ export default function FinanceService() {
         </h1>
         {/* 첫번째 영역 */}
         <div className="mb-[210px]">
-          <img
-            src="/images/finance-01.jpg"
-            alt="finance"
-            className="mx-auto mb-[60px] w-[740px]"
-          />
-          <div>
+          <ScrollOpacity
+            scrollYProgress={scrollYProgress}
+            startScrollY={0}
+            endScrollY={0.015}
+          >
+            <img
+              src="/images/finance-01.jpg"
+              alt="finance"
+              className="mx-auto mb-[60px] w-[740px]"
+            />
+          </ScrollOpacity>
+          <ScrollOpacity
+            scrollYProgress={scrollYProgress}
+            startScrollY={0.015}
+            endScrollY={0.025}
+          >
             <h2 className="mb-[24px] text-[40px] leading-[1.3] font-[700] text-[#191f28]">
               세금 납부, 등본 발급까지
               <br />
@@ -27,17 +46,28 @@ export default function FinanceService() {
               <br />
               이제 토스로 편하게 신청하고 받아보세요.
             </p>
-          </div>
+          </ScrollOpacity>
         </div>
         {/* 두번째 영역 */}
         <div className="mb-[220px] flex gap-[40px]">
           <div>
-            <img
-              src="/images/finance-02-01.jpg"
-              alt="finance"
-              className="mb-[40px] w-[672px]"
-            />
-            <h2 className="text-[40px] leading-[1.3] font-[700] text-[#191f28]">
+            <ScrollOpacity
+              scrollYProgress={scrollYProgress}
+              startScrollY={0.35}
+              endScrollY={0.5}
+            >
+              <img
+                src="/images/finance-02-01.jpg"
+                alt="finance"
+                className="mb-[40px] w-[672px]"
+              />
+            </ScrollOpacity>
+            <ScrollOpacity
+              scrollYProgress={scrollYProgress}
+              startScrollY={0.5}
+              endScrollY={0.8}
+              className="text-[40px] leading-[1.3] font-[700] text-[#191f28]"
+            >
               보험
               <br />
               <span className="text-[#b0b8c1]">
@@ -45,15 +75,26 @@ export default function FinanceService() {
                 <br />
                 병원비 돌려받기를 간편하게
               </span>
-            </h2>
+            </ScrollOpacity>
           </div>
           <div className="mt-[122px]">
-            <img
-              src="/images/finance-02-02.jpg"
-              alt="finance"
-              className="mb-[35px] w-[336px]"
-            />
-            <p className="text-[19px] leading-[1.5] font-[600] text-[#333d4b]">
+            <ScrollOpacity
+              scrollYProgress={scrollYProgress}
+              startScrollY={0.35}
+              endScrollY={0.5}
+            >
+              <img
+                src="/images/finance-02-02.jpg"
+                alt="finance"
+                className="mb-[35px] w-[336px]"
+              />
+            </ScrollOpacity>
+            <ScrollOpacity
+              scrollYProgress={scrollYProgress}
+              startScrollY={0.5}
+              endScrollY={0.8}
+              className="text-[19px] leading-[1.5] font-[600] text-[#333d4b]"
+            >
               또래보다 보험료는 적절하게 내고 있는지,
               <br />낸 만큼 보장받고 있는지 확인해 보세요.
               <br />
@@ -61,19 +102,28 @@ export default function FinanceService() {
               <br />
               추천 받고, 병원비를 간편하게 청구할 수<br />
               있어요.
-            </p>
+            </ScrollOpacity>
           </div>
         </div>
         {/* 세번째 영역 */}
         <div>
-          <div>
+          <ScrollOpacity
+            scrollYProgress={scrollYProgress}
+            startScrollY={0.7}
+            endScrollY={1}
+          >
             <img
               src="/images/finance-03.jpg"
               alt="finance"
               className="mb-[50px] w-full"
             />
-          </div>
-          <div className="flex justify-between">
+          </ScrollOpacity>
+          <ScrollOpacity
+            scrollYProgress={scrollYProgress}
+            startScrollY={0.95}
+            endScrollY={1}
+            className="flex justify-between"
+          >
             <h2 className="text-[40px] leading-[1.3] font-[700] text-[#191f28]">
               내 부동산 · 자동차
               <br />
@@ -86,9 +136,9 @@ export default function FinanceService() {
               <br />
               자동차 관리도 토스에서 시작해 보세요.
             </p>
-          </div>
+          </ScrollOpacity>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
