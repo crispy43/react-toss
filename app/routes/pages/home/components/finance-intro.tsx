@@ -5,7 +5,7 @@ interface Props {
 }
 
 export default function FinanceIntro({ ref }: Props) {
-  const { scrollYProgress } = useScroll({ target: ref });
+  const { scrollYProgress } = useScroll({ target: ref, layoutEffect: false });
   const leftClip = useTransform(
     scrollYProgress,
     [0.65, 1],
