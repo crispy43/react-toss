@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import CreditService from './components/credit-service';
 import Description from './components/description';
 import FinanceIntro from './components/finance-intro';
+import FinanceService from './components/finance-service';
 import Hero from './components/hero';
 import HomeService from './components/home-service';
 import InvestService from './components/invest-service';
@@ -24,6 +25,7 @@ export default function Home() {
         <InvestService />
         <FinanceIntro ref={ref} />
       </div>
+      <FinanceService />
     </>
   );
 }
