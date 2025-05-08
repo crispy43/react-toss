@@ -3,7 +3,9 @@ export default function FinanceService() {
     <section className="h-[4232px]">
       <div className="relative container pt-[250px]">
         <h1 className="mb-[140px] text-[60px] leading-[1.4] font-[700] text-[#191f28]">
-          금융을 넘어 일상을 더 편리하게
+          금융을 넘어
+          <br />
+          일상을 더 편리하게
         </h1>
         {/* 첫번째 영역 */}
         <div className="mb-[210px]">
@@ -14,7 +16,7 @@ export default function FinanceService() {
           />
           <div>
             <h2 className="mb-[24px] text-[40px] leading-[1.3] font-[700] text-[#191f28]">
-              세금 납부, 등본 발급까지å
+              세금 납부, 등본 발급까지
               <br />
               <span className="text-[#b0b8c1]">토스로 한 번에</span>
             </h2>
