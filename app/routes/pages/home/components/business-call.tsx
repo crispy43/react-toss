@@ -2,7 +2,7 @@ import { Button } from '~/components/ui/button';
 
 export default function BusinessCall() {
   return (
-    <section className="h-[306px] py-[33px]">
+    <section className="h-[306px] bg-[#f5f6f8;] py-[33px]">
       <div className="container flex items-center justify-around">
         <div>
           <h2 className="mb-[16px] text-[36px] leading-[1.3] font-[700] text-[#333d4b]">
