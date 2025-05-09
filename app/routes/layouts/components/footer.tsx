@@ -1,5 +1,10 @@
 import { Link } from 'react-router';
 
+import Facebook from '~/components/svg/facebook.svg?react';
+import Instagram from '~/components/svg/instagram.svg?react';
+import Naver from '~/components/svg/naver.svg?react';
+import TossBlog from '~/components/svg/toss-blog.svg?react';
+import Twitter from '~/components/svg/twitter.svg?react';
 import { cn } from '~/lib/utils';
 
 interface FooterNavProps {
@@ -159,6 +164,23 @@ export default function Footer() {
                 </ul>
               );
             })}
+          </div>
+          <div className="flex gap-3">
+            <Link to="#">
+              <Facebook />
+            </Link>
+            <Link to="#">
+              <TossBlog />
+            </Link>
+            <Link to="#">
+              <Naver />
+            </Link>
+            <Link to="#">
+              <Twitter />
+            </Link>
+            <Link to="#">
+              <Instagram />
+            </Link>
           </div>
         </div>
       </div>
