@@ -8,6 +8,7 @@ import Hero from './components/hero';
 import HomeService from './components/home-service';
 import InvestService from './components/invest-service';
 import LoanService from './components/loan-service';
+import PaymentService from './components/payment-service';
 import TransferService from './components/transfer-service';
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
         <FinanceIntro ref={ref} />
       </div>
       <FinanceService />
+      <PaymentService />
     </>
   );
 }
