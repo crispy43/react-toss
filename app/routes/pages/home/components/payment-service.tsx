@@ -14,7 +14,10 @@ export default function PaymentService() {
               <br />
               할인과 적립은 두둑히
             </p>
-            <p className="text-[rgb(51, 61, 75)] pt-[60px] text-[23px] leading-[1.5] font-[600]">
+            <p
+              className="pt-[60px] text-[23px] leading-[1.5] font-[600]"
+              style={{ color: 'rgb(51, 61, 75)' }}
+            >
               온라인과 오프라인 모두
               <br />
               국내는 물론, 해외에서도
@@ -49,7 +52,10 @@ export default function PaymentService() {
             />
           </InDropUp>
           <InDropUp>
-            <p className="text-[rgb(51, 61, 75)] pt-[60px] pl-[60px] text-[23px] leading-[1.5] font-[600]">
+            <p
+              className="pt-[60px] pl-[60px] text-[23px] leading-[1.5] font-[600]"
+              style={{ color: 'rgb(51, 61, 75)' }}
+            >
               결제할 땐, 혜택이 빠질 수 없죠.
               <br />
               쿠폰과 포인트 써서 할인 받고
