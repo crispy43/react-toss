@@ -104,3 +104,8 @@
   color: #1b64da;
   text-decoration: underline;
 }
+
+.hover-icon:hover {
+  opacity: 1;
+  transition: 0.5s;
+}

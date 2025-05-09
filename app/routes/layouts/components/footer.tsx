@@ -166,19 +166,19 @@ export default function Footer() {
             })}
           </div>
           <div className="flex gap-3">
-            <Link to="#">
+            <Link to="#" className="hover-icon opacity-70">
               <Facebook />
             </Link>
-            <Link to="#">
+            <Link to="#" className="hover-icon opacity-70">
               <TossBlog />
             </Link>
-            <Link to="#">
+            <Link to="#" className="hover-icon opacity-70">
               <Naver />
             </Link>
-            <Link to="#">
+            <Link to="#" className="hover-icon opacity-70">
               <Twitter />
             </Link>
-            <Link to="#">
+            <Link to="#" className="hover-icon opacity-70">
               <Instagram />
             </Link>
           </div>
