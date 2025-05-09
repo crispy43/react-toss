@@ -99,3 +99,8 @@
 .hero-shadow {
   background: linear-gradient(180deg, white 0%, white 59px, rgba(255, 255, 255, 0) 100%);
 }
+
+.hover-deco:hover {
+  color: #1b64da;
+  text-decoration: underline;
+}
