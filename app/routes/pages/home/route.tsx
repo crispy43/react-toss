@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 
 import Business from './components/business';
+import BusinessCall from './components/business-call';
 import CreditService from './components/credit-service';
 import Description from './components/description';
 import FinanceIntro from './components/finance-intro';
@@ -30,6 +31,7 @@ export default function Home() {
       <FinanceService />
       <PaymentService />
       <Business />
+      <BusinessCall />
     </>
   );
 }
