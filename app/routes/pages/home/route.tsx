@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 
+import Business from './components/business';
 import CreditService from './components/credit-service';
 import Description from './components/description';
 import FinanceIntro from './components/finance-intro';
@@ -28,6 +29,7 @@ export default function Home() {
       </div>
       <FinanceService />
       <PaymentService />
+      <Business />
     </>
   );
 }
