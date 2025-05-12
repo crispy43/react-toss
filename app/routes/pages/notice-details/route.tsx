@@ -1,6 +1,29 @@
+import { Link } from 'react-router';
+
+import { Button } from '~/components/ui/button';
+
+import { NOTICES } from '../notice/route';
+import NoticeContent from './components/notice-content';
 import NoticeTitle from './components/notice-title';
 
-export default function NoticeDetails() {
+export const loader = ({ params }) => {
+  const { id } = params;
+  // console.log('id', id);
+
+  const notice = NOTICES.find((n) => n.id === id);
+  if (!notice) {
+    throw new Error('Notice not found');
+  }
+
+  return {
+    notice,
+  };
+};
+
+export default function NoticeDetails({ loaderData }) {
+  const { notice } = loaderData;
+  // console.log('notice', notice);
+
   return (
     <section>
       <div className="container">
@@ -8,9 +31,16 @@ export default function NoticeDetails() {
           공지사항
         </h1>
         <div>
-          <NoticeTitle title="공지사항 제목" createdAt={new Date('2025-05-10')} />
+          <NoticeTitle title={notice.title} createdAt={notice.createdAt} />
         </div>
-        <div>공지사항 내용</div>
+        <div>
+          <NoticeContent content={notice.content} />
+          <Link to="/notice">
+            <Button variant="secondary" className="my-[100px]">
+              목록으로 돌아가기
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
