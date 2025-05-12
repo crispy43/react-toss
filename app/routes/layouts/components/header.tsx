@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 import TossLogo from '~/components/svg/toss-logo.svg?react';
 import { useLanguage } from '~/hooks/use-language';
 
@@ -11,11 +13,11 @@ interface NavItem {
 
 const MENU: NavItem[] = [
   {
-    to: '#',
+    to: '/',
     label: '회사 소개',
   },
   {
-    to: '#',
+    to: '/notice',
     label: '공지사항',
   },
   {
@@ -42,12 +44,14 @@ export default function Header() {
   return (
     <header className="fixed z-50 h-[60px] w-full bg-white">
       <div className="container flex h-full items-center justify-between">
-        <div className="w-[66px]">
+        <Link to="/" className="w-[66px]">
           <TossLogo />
-        </div>
+        </Link>
         <nav className="flex gap-4">
           {MENU.map((item, i) => (
-            <NavButton key={i}>{item.label}</NavButton>
+            <Link to={item.to} key={i}>
+              <NavButton>{item.label}</NavButton>
+            </Link>
           ))}
         </nav>
         <div>
