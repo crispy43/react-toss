@@ -1,4 +1,5 @@
 import NoticeItem from './components/notice-item';
+import NoticePagination from './components/notice-pagination';
 
 interface Notice {
   title: string;
@@ -37,10 +38,17 @@ export default function Notice() {
         </h1>
         <div>
           {notices.map((notice, index) => (
-            <NoticeItem key={index} title={notice.title} createdAt={notice.createdAt} />
+            <NoticeItem
+              key={index}
+              title={notice.title}
+              createdAt={notice.createdAt}
+              isLast={index === notices.length - 1}
+            />
           ))}
         </div>
-        <div>공지사항 페이지네이션</div>
+        <div className="pt-[50px]">
+          <NoticePagination />
+        </div>
       </div>
     </section>
   );
