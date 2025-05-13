@@ -2,6 +2,7 @@ import { Link, type LoaderFunctionArgs } from 'react-router';
 
 import prisma from '~/.server/lib/prisma';
 
+import type { Route } from '../notice/+types/route';
 import NoticeItem from './components/notice-item';
 import NoticePagination from './components/notice-pagination';
 
@@ -15,6 +16,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     prisma.notice.findMany({
       take: 10,
       skip: (page - 1) * 10,
+      orderBy: {
+        createdAt: 'desc',
+      },
     }),
     prisma.notice.count(),
   ]);
@@ -22,10 +26,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   return { notices, totalCount, page };
 };
 
-export default function Notice({ loaderData }) {
+export default function Notice({ loaderData }: Route.ComponentProps) {
   const { notices, totalCount, page } = loaderData;
-  console.log('totalCount', totalCount);
-  console.log('page', page);
 
   return (
     <section>
@@ -45,7 +47,7 @@ export default function Notice({ loaderData }) {
           ))}
         </div>
         <div className="pt-[50px]">
-          <NoticePagination />
+          <NoticePagination totalCount={totalCount} page={page} />
         </div>
       </div>
     </section>
