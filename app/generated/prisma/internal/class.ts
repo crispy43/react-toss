@@ -42,12 +42,12 @@ const config: runtime.GetPrismaClientConfig = {
   engineVersion: '3cff47a7f5d65c3ea74883f1d736e41d68ce91ed',
   datasourceNames: ['db'],
   activeProvider: 'postgresql',
+  postinstall: false,
   inlineDatasources: {
     db: {
       url: {
         fromEnvVar: 'POSTGRESQL_URL',
-        value:
-          'postgresql://toss_owner:npg_BPFzJfbI56GE@ep-hidden-field-a1eyloza-pooler.ap-southeast-1.aws.neon.tech/toss?sslmode=require',
+        value: null,
       },
     },
   },
