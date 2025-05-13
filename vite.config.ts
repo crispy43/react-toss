@@ -15,10 +15,4 @@ export default defineConfig({
       },
     }),
   ],
-  optimizeDeps: {
-    exclude: ['@prisma/client'],
-  },
-  ssr: {
-    noExternal: ['@prisma/client'],
-  },
 });

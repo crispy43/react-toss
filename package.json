@@ -12,9 +12,6 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "simple-git-hooks": {
     "pre-commit": "yarn lint-staged",
     "pre-push": "yarn format"
