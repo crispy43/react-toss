@@ -1,41 +1,32 @@
-import { Link } from 'react-router';
+import { Link, type LoaderFunctionArgs } from 'react-router';
+
+import prisma from '~/.server/lib/prisma';
 
 import NoticeItem from './components/notice-item';
 import NoticePagination from './components/notice-pagination';
 
-interface Notice {
-  id: string;
-  title: string;
-  content: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  const query = Object.fromEntries(url.searchParams);
+  let page = parseInt(query.page);
+  if (!page) page = 1;
 
-export const NOTICES: Notice[] = [
-  {
-    id: '1',
-    title: '공지사항 예시 1',
-    content: '공지사항 내용 1',
-    createdAt: new Date('2025-05-10'),
-    updatedAt: new Date('2025-05-10'),
-  },
-  {
-    id: '2',
-    title: '공지사항 예시 2',
-    content: '공지사항 내용 2',
-    createdAt: new Date('2025-05-11'),
-    updatedAt: new Date('2025-05-11'),
-  },
-  {
-    id: '3',
-    title: '공지사항 예시 3',
-    content: '공지사항 내용 3',
-    createdAt: new Date('2025-05-12'),
-    updatedAt: new Date('2025-05-12'),
-  },
-];
+  const [notices, totalCount] = await Promise.all([
+    prisma.notice.findMany({
+      take: 10,
+      skip: (page - 1) * 10,
+    }),
+    prisma.notice.count(),
+  ]);
 
-export default function Notice() {
+  return { notices, totalCount, page };
+};
+
+export default function Notice({ loaderData }) {
+  const { notices, totalCount, page } = loaderData;
+  console.log('totalCount', totalCount);
+  console.log('page', page);
+
   return (
     <section>
       <div className="container">
@@ -43,12 +34,12 @@ export default function Notice() {
           공지사항
         </h1>
         <div>
-          {NOTICES.map((notice, index) => (
+          {notices.map((notice, index) => (
             <Link to={`/notice/${notice.id}`} key={index}>
               <NoticeItem
                 title={notice.title}
                 createdAt={notice.createdAt}
-                isLast={index === NOTICES.length - 1}
+                isLast={index === notices.length - 1}
               />
             </Link>
           ))}

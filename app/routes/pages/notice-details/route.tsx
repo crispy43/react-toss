@@ -1,16 +1,18 @@
 import { Link } from 'react-router';
 
+import prisma from '~/.server/lib/prisma';
 import { Button } from '~/components/ui/button';
 
-import { NOTICES } from '../notice/route';
 import NoticeContent from './components/notice-content';
 import NoticeTitle from './components/notice-title';
 
-export const loader = ({ params }) => {
+export const loader = async ({ params }) => {
   const { id } = params;
-  // console.log('id', id);
-
-  const notice = NOTICES.find((n) => n.id === id);
+  const notice = await prisma.notice.findUnique({
+    where: {
+      id: parseInt(id),
+    },
+  });
   if (!notice) {
     throw new Error('Notice not found');
   }
@@ -22,7 +24,6 @@ export const loader = ({ params }) => {
 
 export default function NoticeDetails({ loaderData }) {
   const { notice } = loaderData;
-  // console.log('notice', notice);
 
   return (
     <section>
