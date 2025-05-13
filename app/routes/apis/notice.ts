@@ -1,7 +1,7 @@
-import prisma from '~/lib/prisma';
+import prisma from '~/.server/lib/prisma';
 
 export const loader = async () => {
-  const notices = await (prisma.notice as any).findMany();
+  const notices = await prisma.notice.findMany();
   return { notices };
 };
 
