@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
-import Hamburger from '~/components/svg/hamburger.svg?react';
 import TossLogo from '~/components/svg/toss-logo.svg?react';
 import { Button } from '~/components/ui/button';
 import { useLanguage } from '~/hooks/use-language';
@@ -9,6 +8,7 @@ import useMediaQuery, { MediaQuery } from '~/hooks/use-media-query';
 import { cn } from '~/lib/utils';
 
 import LangButton from './lang-button';
+import MobileNavSheet from './mobile-nav-sheet';
 import NavButton from './nav-button';
 
 interface NavItem {
@@ -16,7 +16,7 @@ interface NavItem {
   label: string;
 }
 
-const MENU: NavItem[] = [
+export const MENU: NavItem[] = [
   {
     to: '/',
     label: '회사 소개',
@@ -78,11 +78,9 @@ export default function Header() {
           <TossLogo />
         </Link>
         {isMobile ? (
-          <div>
+          <div className="flex gap-2">
             <Button>앱 다운로드</Button>
-            <Button variant="ghost">
-              <Hamburger className="h-6 w-6" />
-            </Button>
+            <MobileNavSheet />
           </div>
         ) : (
           <>
