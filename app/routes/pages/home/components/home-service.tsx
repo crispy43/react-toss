@@ -1,11 +1,17 @@
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
+
 import InDropUp from '~/components/animation/in-drop-up';
 import useMediaQuery, { MediaQuery } from '~/hooks/use-media-query';
 
 export default function HomeService() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, layoutEffect: false });
+  const right = useTransform(scrollYProgress, [0, 1], ['0px', '150px']);
   const isMobile = useMediaQuery(MediaQuery.MOBILE);
 
   return (
-    <section className="h-[1687px]">
+    <section className="h-[1015px] desktop:h-[1687px]" ref={ref}>
       <div className="container flex h-full py-[100px] desktop:px-[46px] desktop:pt-[250px] desktop:pb-[165px]">
         {isMobile ? (
           <div>
@@ -21,7 +27,7 @@ export default function HomeService() {
                 똑똑하게
               </p>
             </InDropUp>
-            <div className="relative flex w-[650px]">
+            <motion.div className="relative flex w-[650px]" style={{ right }}>
               <div>
                 <img
                   className="absolute top-[45px] left-[0px] w-[183px]"
@@ -46,7 +52,7 @@ export default function HomeService() {
                   alt="iphone"
                 />
               </div>
-            </div>
+            </motion.div>
             <InDropUp>
               <p
                 className="pt-[10px] text-[17px] leading-[1.5] font-[600]"
