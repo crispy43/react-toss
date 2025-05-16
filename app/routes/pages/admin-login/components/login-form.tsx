@@ -1,4 +1,4 @@
-import { Form } from 'react-router';
+import { Form, useActionData } from 'react-router';
 
 import { Button } from '~/components/ui/button';
 import {
@@ -16,6 +16,8 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
+  const data = useActionData();
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -35,12 +37,18 @@ export function LoginForm({
                   placeholder="m@example.com"
                   required
                 />
+                {data?.path === 'email' && (
+                  <p className="text-destructive">{data?.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">비밀번호</Label>
                 </div>
                 <Input id="password" type="password" name="password" required />
+                {data?.path === 'password' && (
+                  <p className="text-destructive">{data.message}</p>
+                )}
               </div>
               <Button type="submit" className="w-full">
                 로그인

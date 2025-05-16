@@ -1,6 +1,4 @@
-import type { ActionFunctionArgs } from 'react-router';
-
-import { ForbiddenException } from '~/.server/lib/exception';
+import { type ActionFunctionArgs } from 'react-router';
 
 import { LoginForm } from './components/login-form';
 
@@ -9,21 +7,45 @@ const ADMIN = {
   password: 'test1234!',
 };
 
+class InvalidException extends Error {
+  status: number;
+  message: string;
+  path?: string;
+
+  constructor(message: string, path?: string) {
+    super(message);
+    this.status = 400;
+    this.message = message;
+    this.path = path;
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, this.constructor);
+    }
+  }
+}
+
 export const action = async ({ request }: ActionFunctionArgs) => {
-  const formData = await request.formData();
-  const payload = Object.fromEntries(formData);
-  console.log('payload', payload);
+  try {
+    const formData = await request.formData();
+    const payload = Object.fromEntries(formData);
 
-  if (payload.email !== ADMIN.email) {
-    throw new ForbiddenException('이메일이 존재하지 않습니다.');
+    if (payload.email !== ADMIN.email) {
+      throw new InvalidException('이메일이 존재하지 않습니다.', 'email');
+    }
+
+    if (payload.password !== ADMIN.password) {
+      throw new InvalidException('비밀번호가 일치하지 않습니다.', 'password');
+    }
+
+    // TODO: 로그인 성공 처리
+    return {};
+  } catch (error) {
+    console.error(error);
+    if (error instanceof InvalidException) {
+      return { message: error.message, path: error.path };
+    } else {
+      throw error;
+    }
   }
-
-  if (payload.password !== ADMIN.password) {
-    throw new ForbiddenException('비밀번호가 일치하지 않습니다.');
-  }
-
-  // TODO: 로그인 성공 처리
-  return {};
 };
 
 export default function AdminLogin() {
