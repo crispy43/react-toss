@@ -48,7 +48,7 @@ export default function FinanceService() {
           </ScrollOpacity>
         </div>
         {/* 두번째 영역 */}
-        <div className="mb-[220px] flex flex-col gap-[40px] desktop:flex-row">
+        <div className="mb-[220px] flex w-[430px] flex-col gap-[40px] desktop:flex-row">
           <div>
             <ScrollOpacity
               scrollYProgress={scrollYProgress}
