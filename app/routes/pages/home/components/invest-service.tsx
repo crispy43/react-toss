@@ -37,7 +37,7 @@ export default function InvestService() {
             </InDropUp>
             <div className="relative w-[430px] flex-2 desktop:w-auto">
               <img
-                className="absolute top-[60px] left-[88px] w-[250px]"
+                className="absolute top-[60px] left-[88px] w-[250px] desktop:top-[82px] desktop:left-[110px] desktop:w-[302px]"
                 src="/images/toss-stock.png"
                 alt="toss-stock"
               />

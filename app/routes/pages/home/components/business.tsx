@@ -31,8 +31,8 @@ const Service = ({ title, description, buttonText }: ServiceProps) => {
 
 export default function Business() {
   return (
-    <section className="h-auto bg-black desktop:h-[1927px]">
-      <InDropUp className="py-[100px] desktop:pt-[100px]">
+    <section className="h-auto bg-black pb-[100px] desktop:pb-[200px]">
+      <InDropUp className="pt-[100px] desktop:pt-[100px]">
         <img src="/images/devices.png" alt="devices" className="w-full" />
       </InDropUp>
       <InDropUp className="text-center">
