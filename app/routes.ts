@@ -11,7 +11,10 @@ export default [
 
   // * Admin
   ...prefix('admin', [
-    index('routes/pages/admin/route.tsx'),
+    layout('routes/layouts/admin-layout.tsx', [
+      index('routes/pages/admin/route.tsx'),
+      route('notice', 'routes/pages/admin-notice/route.tsx'),
+    ]),
     route('login', 'routes/pages/admin-login/route.tsx'),
   ]),
 
