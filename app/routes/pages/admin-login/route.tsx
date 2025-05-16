@@ -1,4 +1,6 @@
-import { type ActionFunctionArgs } from 'react-router';
+import { type ActionFunctionArgs, redirect } from 'react-router';
+
+import { getAdminAuthSession } from '~/.server/services/session.service';
 
 import { LoginForm } from './components/login-form';
 
@@ -37,7 +39,13 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }
 
     // TODO: 로그인 성공 처리
-    return {};
+    const adminAuthSession = await getAdminAuthSession(request);
+    adminAuthSession.setAdminAuth(payload.email);
+    return redirect('/admin', {
+      headers: {
+        'Set-Cookie': await adminAuthSession.commit(),
+      },
+    });
   } catch (error) {
     console.error(error);
     if (error instanceof InvalidException) {
