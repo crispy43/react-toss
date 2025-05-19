@@ -2,8 +2,6 @@ import dayjs from 'dayjs';
 import { ArrowUpDown } from 'lucide-react';
 import { useSearchParams } from 'react-router';
 
-import { Button } from '~/components/ui/button';
-import { Input } from '~/components/ui/input';
 import {
   Table,
   TableBody,
@@ -32,10 +30,6 @@ export const NoticeTable = ({ notices }: Props) => {
 
   return (
     <div>
-      <div className="mb-8 flex items-center justify-between">
-        <Input className="w-100" placeholder="공지사항 제목으로 검색..." />
-        <Button>새 공지사항 등록</Button>
-      </div>
       <Table>
         <TableHeader>
           <TableRow>
