@@ -13,6 +13,7 @@ export default [
   ...prefix('admin', [
     layout('routes/layouts/admin-layout.tsx', [
       index('routes/pages/admin/route.tsx'),
+      route('home', 'routes/pages/admin-home/route.tsx'),
       route('notice', 'routes/pages/admin-notice/route.tsx'),
     ]),
     route('login', 'routes/pages/admin-login/route.tsx'),

@@ -9,7 +9,7 @@ const data = {
   navMain: [
     {
       title: '관리자 홈',
-      url: '/admin',
+      url: '/admin/home',
       icon: Home,
       isActive: true,
     },
