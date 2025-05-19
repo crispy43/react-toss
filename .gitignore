@@ -15,4 +15,4 @@
 /.react-router/
 
 # MCP
-mcp.json
+.vscode/mcp.json
