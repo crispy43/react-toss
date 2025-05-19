@@ -1,0 +1,46 @@
+{
+  "servers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/sjjin/Desktop",
+        "/Users/sjjin/Downloads"
+      ]
+    },
+    "applescript_execute": {
+      "command": "npx",
+      "args": [
+        "@peakmojo/applescript-mcp"
+      ]
+    },
+    "notionApi": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"]
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    }
+  },
+  "inputs": [
+    {
+      "id": "baseDirectory",
+      "type": "promptString",
+      "description": "Enter the base directory path for the server"
+    },
+    {
+      "id": "allowedDirectory",
+      "type": "promptString",
+      "description": "Enter the path to another allowed directory"
+    }
+  ]
+}
