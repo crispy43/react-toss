@@ -13,3 +13,6 @@
 
 # React Router
 /.react-router/
+
+# MCP
+mcp.json
