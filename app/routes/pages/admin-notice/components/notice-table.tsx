@@ -16,8 +16,6 @@ import type { Notice } from '~/generated/prisma';
 
 interface Props {
   notices: Notice[];
-  totalCount: number;
-  page: number;
 }
 
 export const NoticeTable = ({ notices }: Props) => {
