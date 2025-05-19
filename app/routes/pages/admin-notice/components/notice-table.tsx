@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { ArrowUpDown } from 'lucide-react';
-import { useSearchParams } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 
 import {
   Table,
@@ -48,7 +48,11 @@ export const NoticeTable = ({ notices }: Props) => {
           {notices.map((notice) => (
             <TableRow key={notice.id}>
               <TableCell>{notice.id}</TableCell>
-              <TableCell>{notice.title}</TableCell>
+              <TableCell>
+                <Link to={`/admin/notice/${notice.id}`} className="hover:underline">
+                  {notice.title}
+                </Link>
+              </TableCell>
               <TableCell>
                 {dayjs(notice.createdAt).format('YYYY.MM.DD HH:mm:ss')}
               </TableCell>

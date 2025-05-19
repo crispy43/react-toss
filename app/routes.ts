@@ -15,6 +15,7 @@ export default [
       index('routes/pages/admin/route.tsx'),
       route('home', 'routes/pages/admin-home/route.tsx'),
       route('notice', 'routes/pages/admin-notice/route.tsx'),
+      route('notice/:id', 'routes/pages/admin-notice-details/route.tsx'),
     ]),
     route('login', 'routes/pages/admin-login/route.tsx'),
   ]),
