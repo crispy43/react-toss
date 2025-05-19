@@ -13,9 +13,6 @@ import {
   TableRow,
 } from '~/components/ui/table';
 import type { Notice } from '~/generated/prisma';
-import { SortOrder } from '~/generated/prisma/internal/prismaNamespace';
-
-import NoticePagination from './notice-pagination';
 
 interface Props {
   notices: Notice[];
@@ -23,14 +20,14 @@ interface Props {
   page: number;
 }
 
-export const NoticeTable = ({ notices, totalCount, page }: Props) => {
+export const NoticeTable = ({ notices }: Props) => {
   const [_, setSearchParams] = useSearchParams();
   const handleSort = () => {
     setSearchParams((current) => {
       const params = {
         ...Object.fromEntries(current),
       };
-      params.sort = params.sort === SortOrder.asc ? SortOrder.desc : SortOrder.asc;
+      params.sort = params.sort === 'asc' ? 'desc' : 'asc';
       return params;
     });
   };
@@ -70,9 +67,6 @@ export const NoticeTable = ({ notices, totalCount, page }: Props) => {
           ))}
         </TableBody>
       </Table>
-      <div className="mt-8">
-        <NoticePagination totalCount={totalCount} page={page} />
-      </div>
     </div>
   );
 };
