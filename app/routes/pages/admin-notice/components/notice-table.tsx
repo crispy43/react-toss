@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import { ArrowUpDown } from 'lucide-react';
+import { useSearchParams } from 'react-router';
 
 import {
   Table,
@@ -9,12 +11,28 @@ import {
   TableRow,
 } from '~/components/ui/table';
 import type { Notice } from '~/generated/prisma';
+import { SortOrder } from '~/generated/prisma/internal/prismaNamespace';
+
+import NoticePagination from './notice-pagination';
 
 interface Props {
   notices: Notice[];
+  totalCount: number;
+  page: number;
 }
 
-export const NoticeTable = ({ notices }: Props) => {
+export const NoticeTable = ({ notices, totalCount, page }: Props) => {
+  const [_, setSearchParams] = useSearchParams();
+  const handleSort = () => {
+    setSearchParams((current) => {
+      const params = {
+        ...Object.fromEntries(current),
+      };
+      params.sort = params.sort === SortOrder.asc ? SortOrder.desc : SortOrder.asc;
+      return params;
+    });
+  };
+
   return (
     <div>
       <Table>
@@ -22,7 +40,12 @@ export const NoticeTable = ({ notices }: Props) => {
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>제목</TableHead>
-            <TableHead>생성시간</TableHead>
+            <TableHead onClick={handleSort}>
+              <div className="flex cursor-pointer items-center gap-2">
+                <span>생성시간</span>
+                <ArrowUpDown size={16} />
+              </div>
+            </TableHead>
             <TableHead>수정시간</TableHead>
           </TableRow>
         </TableHeader>
@@ -41,6 +64,9 @@ export const NoticeTable = ({ notices }: Props) => {
           ))}
         </TableBody>
       </Table>
+      <div className="mt-8">
+        <NoticePagination totalCount={totalCount} page={page} />
+      </div>
     </div>
   );
 };
