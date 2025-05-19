@@ -47,8 +47,11 @@ export default function AdminNoticeDetails({ loaderData }: Route.ComponentProps)
           </p>
         ))}
       </div>
-      <div className="mt-8">
-        <Button onClick={() => navigate(-1)}>목록 보기</Button>
+      <div className="mt-8 flex justify-between">
+        <Button onClick={() => navigate(-1)} variant="secondary">
+          목록 보기
+        </Button>
+        <Button>수정</Button>
       </div>
     </div>
   );
