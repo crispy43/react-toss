@@ -5,6 +5,7 @@ import { getAdminAuthSession } from '~/.server/services/session.service';
 import { BreadcrumbItem } from '~/components/ui/breadcrumb';
 
 import type { Route } from '../admin-notice/+types/route';
+import NoticePagination from './components/notice-pagenation';
 import { NoticeTable } from './components/notice-table';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -14,15 +15,23 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     return redirect('/admin/login');
   }
 
-  const notices = await prisma.notice.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
+  const url = new URL(request.url);
+  const query = Object.fromEntries(url.searchParams);
+  let page = parseInt(query.page);
+  if (!page) page = 1;
 
-  return {
-    notices,
-  };
+  const [notices, totalCount] = await Promise.all([
+    prisma.notice.findMany({
+      take: 10,
+      skip: (page - 1) * 10,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    }),
+    prisma.notice.count(),
+  ]);
+
+  return { notices, totalCount, page };
 };
 
 export const handle = {
@@ -30,10 +39,13 @@ export const handle = {
 };
 
 export default function AdminNotice({ loaderData }: Route.ComponentProps) {
-  const { notices } = loaderData;
+  const { notices, totalCount, page } = loaderData;
   return (
     <div>
       <NoticeTable notices={notices} />
+      <div className="mt-8">
+        <NoticePagination totalCount={totalCount} page={page} />
+      </div>
     </div>
   );
 }
