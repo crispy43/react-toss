@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { useNavigate } from 'react-router';
 
 import prisma from '~/.server/lib/prisma';
+import { BreadcrumbItem } from '~/components/ui/breadcrumb';
 import { Button } from '~/components/ui/button';
 import { Separator } from '~/components/ui/separator';
 
@@ -21,6 +22,10 @@ export const loader = async ({ params }) => {
   return {
     notice,
   };
+};
+
+export const handle = {
+  breadcrumb: () => <BreadcrumbItem>공지사항 관리 / 상세</BreadcrumbItem>,
 };
 
 export default function AdminNoticeDetails({ loaderData }: Route.ComponentProps) {
