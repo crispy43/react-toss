@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import { ArrowUpDown } from 'lucide-react';
+import { useSearchParams } from 'react-router';
 
 import {
   Table,
@@ -15,6 +17,17 @@ interface Props {
 }
 
 export const NoticeTable = ({ notices }: Props) => {
+  const [_, setSearchParams] = useSearchParams();
+  const handleSort = () => {
+    setSearchParams((current) => {
+      const params = {
+        ...Object.fromEntries(current),
+      };
+      params.sort = params.sort === 'asc' ? 'desc' : 'asc';
+      return params;
+    });
+  };
+
   return (
     <div>
       <Table>
@@ -22,7 +35,12 @@ export const NoticeTable = ({ notices }: Props) => {
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>제목</TableHead>
-            <TableHead>생성시간</TableHead>
+            <TableHead onClick={handleSort}>
+              <div className="flex cursor-pointer items-center gap-2">
+                <span>생성시간</span>
+                <ArrowUpDown size={16} />
+              </div>
+            </TableHead>
             <TableHead>수정시간</TableHead>
           </TableRow>
         </TableHeader>

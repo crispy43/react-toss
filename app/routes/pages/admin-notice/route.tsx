@@ -3,6 +3,7 @@ import { type LoaderFunctionArgs, redirect } from 'react-router';
 import prisma from '~/.server/lib/prisma';
 import { getAdminAuthSession } from '~/.server/services/session.service';
 import { BreadcrumbItem } from '~/components/ui/breadcrumb';
+import type { SortOrder } from '~/generated/prisma/internal/prismaNamespace';
 
 import type { Route } from '../admin-notice/+types/route';
 import NoticePagination from './components/notice-pagenation';
@@ -19,13 +20,15 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const query = Object.fromEntries(url.searchParams);
   let page = parseInt(query.page);
   if (!page) page = 1;
+  let sort = query.sort as SortOrder;
+  if (!sort) sort = 'desc';
 
   const [notices, totalCount] = await Promise.all([
     prisma.notice.findMany({
       take: 10,
       skip: (page - 1) * 10,
       orderBy: {
-        createdAt: 'desc',
+        createdAt: sort,
       },
     }),
     prisma.notice.count(),
