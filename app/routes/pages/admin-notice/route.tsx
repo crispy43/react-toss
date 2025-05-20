@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { type LoaderFunctionArgs, redirect, useSearchParams } from 'react-router';
+import { Link, type LoaderFunctionArgs, redirect, useSearchParams } from 'react-router';
 
 import prisma from '~/.server/lib/prisma';
 import { getAdminAuthSession } from '~/.server/services/session.service';
@@ -81,7 +81,9 @@ export default function AdminNotice({ loaderData }: Route.ComponentProps) {
           onChange={(e) => setKeyword(e.target.value)}
           value={keyword}
         />
-        <Button>새 공지사항 등록</Button>
+        <Link to="/admin/notice/create">
+          <Button>새 공지사항 등록</Button>
+        </Link>
       </div>
       <NoticeTable notices={notices} />
       <div className="mt-8">
