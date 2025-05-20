@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 import prisma from '~/.server/lib/prisma';
 import { BreadcrumbItem } from '~/components/ui/breadcrumb';
@@ -51,7 +51,9 @@ export default function AdminNoticeDetails({ loaderData }: Route.ComponentProps)
         <Button onClick={() => navigate(-1)} variant="secondary">
           목록 보기
         </Button>
-        <Button>수정</Button>
+        <Link to={`/admin/notice/${notice.id}/edit`}>
+          <Button>수정</Button>
+        </Link>
       </div>
     </div>
   );
